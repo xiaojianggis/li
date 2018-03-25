@@ -1,0 +1,44 @@
+#Rapper {
+	width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#Rapper #Logo {
+}
+#Rapper #Navigation {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 24px;
+	background-color: #FFFFFF;
+}
+#Rapper #Blank {
+	height: 20px;
+	background-image: url(../Images/background.jpg);
+	background-repeat: repeat;
+}
+#Rapper #Publications {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 24px;
+	color: #FFFFFF;
+}
+
+#Rapper #Presentations {
+	font-family: "Times New Roman", Times, serif;
+	font-size: 24px;
+	color: #FFFFFF;
+}
+#Rapper #googleMap {
+	float: right;
+	clear: none;
+	height: 230px;
+	width: 400px;
+}
+#Rapper #Picture #Left img {
+	background-color: #00CCCC;
+	height: 230px;
+	width: 200px;
+	float: left;
+}
