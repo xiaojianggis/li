@@ -78,7 +78,50 @@
       </p>
       
       <p align="justify" class="STYLE1">
-        <strong>2. Create Shapefiles using GDAL + Python.</strong>
+        <strong>2. Create Shapefiles using Fiona + Shapely.</strong>
+        
+        The combination of Fiona and shapely provide a great tool for spatial data manipulating. Recently, I realized how convenient it is to use Fiona and Shapely for spatial data manipulation and spatial analysis. Here is a very simple example for creating a new point feature class (shapefile) based on series of longitudes and latitudes. Using Fiona and shapely, you can also do spatial analyses, such as buffer analysis, intersection, etc.
+
+        <i>
+        from shapely.geometry import Point, mapping
+        import pandas as pd
+        import fiona
+
+        # prepare the schema and crs of the output shapefile
+        schema = {
+            'geometry': 'Point',
+            'properties': {
+                'id': 'str: 20',
+                'name': 'str: 20',
+            }
+        }
+
+        # Using WGS84 projection type
+        crs = {'init': u'epsg:4326'}
+
+        # read the csv file and create shapefile
+        coffee_shop_csv = 'sample-data/cambridge_coffee_shops.csv'
+        coffee_shop_sheet = pd.read_csv(coffee_shop_csv)
+
+        # The output shapefile
+        coffee_shop_shp = 'sample-data/cambridge_coffee_shops2.shp' 
+
+        with fiona.open(coffee_shop_shp, 'w', driver = "ESRI Shapefile", crs = crs, schema=schema) as output:
+            for row in coffee_shop_sheet.iterrows():
+                lon = row[1][7]
+                lat = row[1][6]
+                
+                id_ = row[1][0]
+                name = row[1][1]
+                
+                point = Point(float(lon), float(lat))
+                output.write({'properties':{'id': id_,
+                                            'name': name
+                                            },
+                              'geometry': mapping(point)
+                             })
+
+        </i>
       </p>
       <br>
       
