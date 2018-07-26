@@ -140,7 +140,8 @@ from StringIO import StringIO
 import matplotlib.pyplot as plt
 
 key='' # get you key from Google account
-URL = r"http://maps.googleapis.com/maps/api/streetview?size=400x400&pano=%s&fov=60&heading=0&pitch=0&sensor=false&key=%s"%(panoid, key)
+URL = r"http://maps.googleapis.com/maps/api/streetview?size=400x400\
+      &pano=%s&fov=60&heading=0&pitch=0&sensor=false&key=%s"%(panoid, key)
 
 # let the code to pause by 1s, in order to not go over data limitation of Google quota
 time.sleep(1)
